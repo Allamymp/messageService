@@ -27,6 +27,12 @@ public class Contact {
     @OneToMany
     private List<ContactChannel> channels = new ArrayList<>();
 
+    public Contact(String name, String email, Client client) {
+        this.name = name;
+        this.email = email;
+        this.client = client;
+    }
+
     public void addChannel(ContactChannel channel) {
         channels.add(channel);
         channel.setContact(this);

@@ -24,4 +24,18 @@ public class Client {
     private String password;
     @OneToMany(mappedBy = "client")
     private List<Contact> contactList = new ArrayList<>();
+
+    public Client(String name, String email, String password) {
+        this.name = name;
+        this.email = email;
+        this.password = password;
+    }
+
+    public void addContact(Contact contact) {
+        this.contactList.add(contact);
+    }
+
+    public void removeContact(Contact contact) {
+        this.contactList.remove(contact);
+    }
 }

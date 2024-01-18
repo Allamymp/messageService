@@ -6,7 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.portfolio.emailsender.model.entities.Contact;
+import org.portfolio.emailsender.service.EmailService;
 
 @Entity
 @DiscriminatorValue("email")
@@ -19,6 +19,6 @@ public class Email extends ContactChannel {
 
     @Override
     public void sendMessage(String message) {
-        // Lógica específica para enviar e-mail
+      new EmailService().send(message);
     }
 }
