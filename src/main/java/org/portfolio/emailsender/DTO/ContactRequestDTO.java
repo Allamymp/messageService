@@ -1,3 +1,3 @@
 package org.portfolio.emailsender.DTO;
 
-public record ContactRequestDTO(String name, String email, Long clientId) {}
+public record ContactRequestDTO(Long id, String name, String email, Long clientId) {}
