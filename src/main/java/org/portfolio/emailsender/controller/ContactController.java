@@ -27,7 +27,6 @@ public class ContactController {
                 return ResponseEntity.ok().body(new ContactResponseDTO(
                         contact.get().getId(),
                         contact.get().getName(),
-                        contact.get().getEmail(),
                         contact.get().getClient().getId(),
                         contact.get().getChannels()
                 ));
@@ -48,7 +47,6 @@ public class ContactController {
                 data.add(new ContactResponseDTO(
                         contact.getId(),
                         contact.getName(),
-                        contact.getEmail(),
                         contact.getClient().getId(),
                         contact.getChannels()
                 ));
@@ -68,21 +66,23 @@ public class ContactController {
             return ResponseEntity.internalServerError().body(e.getMessage());
         }
     }
+
     @PostMapping("/edit")
-    public ResponseEntity<?> edit(@RequestBody @Validated ContactRequestDTO data){
-        try{
+    public ResponseEntity<?> edit(@RequestBody @Validated ContactRequestDTO data) {
+        try {
             service.edit(data);
-            return  ResponseEntity.noContent().build();
-        }catch (Exception e){
+            return ResponseEntity.noContent().build();
+        } catch (Exception e) {
             return ResponseEntity.internalServerError().body(e.getMessage());
         }
     }
+
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> delete(@PathVariable @Validated Long id){
-        try{
+    public ResponseEntity<?> delete(@PathVariable @Validated Long id) {
+        try {
             service.delete(id);
             return ResponseEntity.noContent().build();
-        }catch (Exception e){
+        } catch (Exception e) {
             return ResponseEntity.internalServerError().body(e.getMessage());
         }
     }

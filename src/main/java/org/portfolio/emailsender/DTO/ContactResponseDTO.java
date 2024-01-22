@@ -5,5 +5,5 @@ import org.portfolio.emailsender.model.channels.ContactChannel;
 
 import java.util.List;
 
-public record ContactResponseDTO(Long id, String name, String email, Long clientId, List<ContactChannel> contactChannels) {
+public record ContactResponseDTO(Long id, String name, Long clientId, List<ContactChannel> contactChannels) {
 }

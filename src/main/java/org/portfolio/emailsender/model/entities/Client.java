@@ -24,6 +24,8 @@ public class Client {
     private String password;
     @OneToMany(mappedBy = "client")
     private List<Contact> contactList = new ArrayList<>();
+    @OneToMany(mappedBy = "client")
+    private List<Group> groupList = new ArrayList<>();
 
     public Client(String name, String email, String password) {
         this.name = name;
@@ -38,4 +40,13 @@ public class Client {
     public void removeContact(Contact contact) {
         this.contactList.remove(contact);
     }
+
+    public void addGroup(Group group) {
+        this.groupList.add(group);
+    }
+
+    public void removeGroup(Group group) {
+        this.groupList.remove(group);
+    }
+
 }

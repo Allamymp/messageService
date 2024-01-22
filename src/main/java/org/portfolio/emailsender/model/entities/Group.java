@@ -1,6 +1,5 @@
 package org.portfolio.emailsender.model.entities;
 
-
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,29 +10,28 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@AllArgsConstructor
-@NoArgsConstructor
 @Getter
 @Setter
-public class Contact {
+@AllArgsConstructor
+@NoArgsConstructor
+public class Group {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
-    private String email;
     @ManyToOne
     private Client client;
-    @OneToMany
-    private List<Contact> contacts = new ArrayList<>();
-    @ManyToMany
-    private List<Group> groups = new ArrayList<>();
+   @ManyToMany
+    private List<Contact> contactList = new ArrayList<>();
 
-    public Contact(String name, String email, Client client) {
+    public Group(String name, Client client){
         this.name = name;
-        this.email = email;
         this.client = client;
-
     }
-
-
+    private void addContact(Contact contact){
+        this.contactList.add(contact);
+    }
+    private void removeContact(Contact contact){
+        this.contactList.remove(contact);
+    }
 }

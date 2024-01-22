@@ -33,7 +33,7 @@ public class ContactService {
         client.ifPresent(value -> repository.save(new Contact(
                 data.name(),
                 data.email(),
-                value
+                client.get()
         )));
     }
 
@@ -41,7 +41,6 @@ public class ContactService {
         Optional<Contact> contact = repository.findById(data.id());
         if(contact.isPresent()){
             contact.get().setName(data.name());
-            contact.get().setEmail(data.email());
             repository.save(contact.get());
         }
     }
